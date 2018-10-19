@@ -1,0 +1,15 @@
+ubuntu ntfs 读写权限
+sudo apt-get install ntfs-3g
+sudo apt-get install ntfs-config
+根据硬盘类型，硬盘代号可能是[hs]d[a-z]，后跟的数字表示分区。在/dev目录下面有对应文件，可以自己打开查看
+自动挂载
+sudo gedit /etc/fstab
+/dev/sda5 /media/document ntfs-3g defaults,locale=zh_CN.UTF-8 0 0
+//手动挂载sda6(Windows 下的E盘)到 /media/soft 目录
+sudo mkdir /media/soft
+sudo mount -t ntfs-3g /dev/sda6 /media/soft -o defaults,locale=zh_CN.UTF-8
+sudo umount /media/soft
+//挂载所有
+sudo mount -a
+//卸载所有，使用中的不会被卸载
+sudo umount -a
